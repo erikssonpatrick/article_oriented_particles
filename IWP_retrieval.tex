@@ -112,63 +112,7 @@ In this study, we continue the work of \citet{barlakas:intro:21} to simulate pol
 
 This article is structured as follows. Firstly the features and set-up of radiative transfer model to simulate the database are described in detail (Sect.~\ref{sec:rt_simulations}). The scaling scheme is discussed in Sect.~\ref{sec:polratio_selection}. A simple empirical model to estimate the snow emissivities is also introduced and described in Sect.~\ref{sec:snow_emissivity}. Section~\ref{sec:comparison_sim_obs} gives a detailed comparison of the simulated radiances and the associated PD with GMI observations. The sensitivity of retrieval performance to the oriented particles is discussed in Sect.~\ref{sec:iwp_retrievals}, and finally retrieval results from GMI observations are described in Sect.~\ref{sec:IWP_GMI}.
 
- 
-	
- 
-
-
-%Studies have also shown the positive impact of polarimetric measurements in retrievals of cloud microphysics. For example, \citet{coy:sensi:20}, have shown that incorporating polarimetric measurements improve the retrievals of particle effective diameter (D$_{\text{eff}}$), while \citet{hioki:degre:16} analyse the impact on ice particle surface roughness.
-
-
-
-%\citet{gong} have tried to explain the measured PDs through radiative transfer simulations and linked them to the non-spherical shapes and preferred orientation of ice hydrometeors. They supported their conclusions with observations from GMI at 89\,GHz, 166\,GHz and observation from Compact Scanning Submillimeter-wave Imaging Radiometer (CoSSIR) at 660\,GHz. \citet{xie} also conducted polarised radiative transfer simulations at 150\,GHz and concluded that for as snow particles become rounder, the PDs decrease, and maximum PDs are observed for horizontally oriented particles. The first rigorous simulations reproducing the observed PD were conducted by Brath et al. 2020). One of their main findings was the strong impact of the assumed shape of the ice hydrometeor on the simulated PD. 
- 
-
-
-%In this study, both azimuthally random oriented (ARO) and total random oriented (TRO) hydrometeors are simulated. The existing scattering database of azimuthally randomly oriented (ARO) particles \citep{brath:micro:20} is not comprehensive. It contains two habits, but as one habit is only valid for relatively small particles (the plate habit) and the second (the aggregate habit) does not cover small particles. In practice, these two habits have to combined to effectively simulate a single habit. Additionally, simulating ARO particles inside radiative transfer is computationally expensive.
-
-
-
-
-%Additionally, dichroism effects can also arise from the emission effects of liquid hydrometeors and surface (typically water).  
-
-%For example, the polarised signatures from these can often be distinguished through the TB and PD relationship. Both passive and active microwave  sensors (both low and high frequencies) can provide accurate measures of the polarimetric differences. 
-
   
-
-%
-
-%The scattering effects are governed by the orientation of the hydrometers, 
- 
-
-
-%The scattering effects strongly depend on the microphysical properties of ice hydrometeors, and  and the The hich result in TB differences between the radiances measured by horizontal (H) and vertical (V) polarisations. 
-
-
-
-%Observations with microwave channels, especially those at higher frequencies ( 90 GHz), are able to derive microphysical parameters of frozen hydrometeors. 
-
- 
-
-
- 
- 
-%which can be physically related the observations of physical properties of the ice clouds \citep{Wang et al., 2001; Skofronick-Jackson et al., 2004; Wu et al., 2006}.
-
-
-
-
-%The global atmospheric ice estimates from passive microwave sensors have proven to be successful in capturing the diurnal cycle and inter-seasonal fluctuations. However, there exists inconsistency between different cloud ice observations, thus leading to model uncertainties. A detailed comparison of different space borne IWP measurements by \citet{duncan:anupd:18, eliasson:asses:11} highlights that large discrepancies exist between different IWP estimates as the space-borne remote sensing techniques still cannot fully resolve the atmospheric ice properties. The limitations associated with sensor sensitivities and the oversimplified microphysical assumptions are mostly to blame. The sensor limitations will be overcome to a certain extent with the launch of new sensors like Ice Cloud Imager (ICI) measuring and sub-millimeter (sub-mm) wavelengths. ICI shall also bridge the sensitivity gap between microwave and infrared sensors. 
-
-
-
-%  When particles in ice clouds change from horizontally to randomly oriented, the brightness temperature changes up to 6 K. An accurate IWPretrieval therefore would require dual-polarized measurements for particle orientation information.
-
-%Although IWP is a part of the GPM-GPROF retrievals, the Bayesian retrieval algorithm utilized by GPM for IWP is same as the one used for precipiation. The a priori database on which the retrievals are based on does not cover ice hydrometeors. The database is generated for hydrometeor profiles covered by GPM Dual Precipitation radar (DPR), which is sensitive only to precipitating hydrometeors. Currently, GMI is the only sensor which senses in dual polarisation mode above 100\,\,GHz. We aim for physical based measurements of IWP based on a database of large number of atmospheric states and TBs corresponding to GMI instrument. This database is generated using radiative transfer with the target to fully represents the observed TB variability. Zeroing on a perfect ice model which incorporates accurate orientation effects is a challenge in radiative transfer. It often requires heavy computational loads, besides the single scattering databases do not cover a wide range of particle models \citep{brath:micro:20}. In this study, the scheme is extended to cover different magnitudes of polarimetric signatures observed by the Global Precipitation Measurement (GPM) Microwave Imager (GMI) 166\,\,GHz channels. 
-
-
-
- 
 
 
 \section{Satellite and model data}
@@ -285,7 +229,6 @@ Using the ARTS setup described in Sect.~\ref{sec:arts_setup}, two type of databa
 	\end{tabular}
 	\belowtable{} % Table Footnotes
 \end{table}
-
 
 
 %Using the simulations setup described in previous sections, approximately 1\,200\,000 pencil beam calculations were made for each of the four databases. These calculations are based on randomly selected CloudSat orbits during January 2009, but each database has the same set of inputs.
@@ -551,17 +494,7 @@ However, the posterior distribution outputted by QRNN is of high interest here. 
 
 Our retrievals are based on a transformed log-linear scale therefore the retrieval is always non-zero. Thus, to quantify the rate of missed  and false positive retrievals, we assume the cutoff IWP threshold for clear-sky conditions as 0.05\,\,kg m$^{-2}$. A false positive occurs when, the reference is lower than this threshold, but the retrievals are higher than 0.20\,\,kg m$^{-2}$, and vice-versa for the missed retrievals. In total, only 1.5\% of the clear-sky cases end up with false positives, and 0.20\% of the all-sky cases are missed. Due to their low fraction, filtering these false retrievals has little effect on the accuracy.
 
-%While in both cases, though the number of wrong retrievals is quite low, it seems to have a dependence on surface types. Interestingly, most false negatives occur for water and snow surface types and towards the warmer TBs (less than 190\,\,K at 166V GHz). For former, such cases are mostly concentrated at 275\,\,K and low values of PD.  However for snow surface type, missed retrievals are spread out over the entire range of TBs. Similarly, when QRNN falsely retrieves high IWP for clear-sky cases, most cases occur over water, but land and snow also account for around 25\% cases each. Such cases arise from the less represented part of the a priori distribution. Due to the scarcity of the observations in outlying regions of the state space, their quantiles are poorly calibrated. 
 
-
-
-
-%\begin{figure}[t]
-% 	\includegraphics[width=8.3cm]{Figures/false_miss.pdf}
-% 	\caption{The occurrence rate (in \%) for false negatives and false positives subset by the TB at 166V\,\,GHz and surface types. A false negative occurs when the retrieved IWP is greater than 0.20\,\,kg m$^{-2}$ and the reference is less than 0.05\,\,kg m$^{-2}$. While, a false positive occurs when the retrived IWP is less than 0.05\,\,kg m$^{-2}$ and the reference is greater than 0.20\,\,kg m$^{-2}$. }
-% 	\label{fig:false_ret}
-%\end{figure}  
- 
 
 \subsubsection{Impact of oriented particles}
 \label{sec:impact_retrieval}
@@ -727,8 +660,7 @@ Even with the simplified microphysical assumptions, large plate aggregate gave q
 
 
 
-%it is worthwhile to remember that the concept of the CI was introduced to provide an answer to the vexing issue in statistical inference of how to deal with the uncertainty inherent in results derived from data that represent randomly selected subset of a population. There are other answers, notably that provided by Bayesian inference in the form of credible intervals. Calculation of the conventional CI depends on set rules that ensure that the interval determined by the rule will include the true value of the population parameter. This is the so called ‘frequentist’ approach. The Bayesian approach offers intervals that can, subject to acceptance of interpretation of ‘probability’ as Bayesian probability, be interpreted as meaning that the specific interval calculated from a given dataset has a particular probability of including the true value, conditional on the particular situation (10). Bayesian intervals treat their bounds as fixed and the estimated parameter as a random variable, whereas conventional approach treats confidence limits as random variables and the population parameter as a fixed value.
-%The a priori distribution of also affects the retrieval errors. Representation of extreme cases with IWPs > 10\,\,kg m$^{-2}$ is quite poor, hence the posterior distribution cannot account for such cases correctly. This can be solved through a database which has equal representation of dynamic range of IWPs, but it would require more simulations. 
+
 \todo{incomplete}
 
 \todo{Future implications}
